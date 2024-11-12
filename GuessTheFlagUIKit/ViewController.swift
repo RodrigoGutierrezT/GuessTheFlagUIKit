@@ -34,6 +34,11 @@ class ViewController: UIViewController {
     }
     
     func askQuestion(action: UIAlertAction! = nil) {
+        
+        button1.transform = .identity
+        button2.transform = .identity
+        button3.transform = .identity
+        
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         
@@ -45,6 +50,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTap(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5) {
+            sender.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+        }
+        
         var title: String
         
         if sender.tag == correctAnswer {
